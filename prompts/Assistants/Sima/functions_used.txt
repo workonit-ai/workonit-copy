@@ -1,0 +1,404 @@
+
+
+===========================================================================
+db_write
+===========================================================================
+{
+  "name": "db_write",
+  "description": "Store a document in the backend db for the shift management system. You should invoke the db_write function with the relevant parameters as defined in the schema, using the correct collection_name (companies or availabilities). The parameter values should fit MongoDB API. You should populate the document fields according to what needs to be stored. The function will return the write output, or will notify you with an error. In that case, tell the user to contact the administrator. Business, Organization or Company are the same things, Use the companies model for these 3. For creating the company you may need to call the get_system_context first)",
+  "strict": false,
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "collection_name": {
+        "type": "string",
+        "enum": [
+          "companies",
+          "availabilities"
+        ],
+        "description": "The name of the MongoDB collection to write to (companies, availabilities)"
+      },
+      "document": {
+        "type": "object",
+        "description": "The document to be inserted into the collection",
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "userId": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "roles": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Array of roles in the company"
+              },
+              "shifts": {
+                "type": "array",
+                "items": {
+                  "name": {
+                    "type": "string",
+                    "description":"Name of the shift."                  
+                  },
+                  "dayOfTheWeek": {
+                    "type": "string",
+                    "enum": "['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']",
+                    "required": true,
+                  },
+                  "startTime": {
+                    "type": "string",
+                  },
+                  "endTime": {
+                    "type": "string"
+                  }
+                },
+                "description": "An array of all the shifts that are in a week for the company. There can be multiple shifts on each day"
+              }
+            },
+            "required": [
+              "userId",
+              "name",
+              "email",
+              "roles"
+            ],
+            "description": "Companies document structure"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "businessId": {
+                "type": "string"
+              },
+              "employeeId": {
+                "type": "string"
+              },
+              "startTime": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "endTime": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "shiftType": {
+                "type": "string"
+              },
+              "location": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "Scheduled",
+                  "Unscheduled",
+                  "Cancelled"
+                ]
+              },
+              "notes": {
+                "type": "string"
+              },
+              "confirmedByManager": {
+                "type": "boolean"
+              },
+              "confirmedByEmployee": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "businessId",
+              "employeeId",
+              "startTime",
+              "endTime"
+            ],
+            "description": "Shift document structure"
+          }
+        ]
+      }
+    },
+    "required": [
+      "collection_name",
+      "document"
+    ]
+  }
+}
+
+
+
+
+
+
+===========================================================================
+db_read
+===========================================================================
+{
+  "name": "db_read",
+  "description": "Query for anything in the backend db. Invoke the db_read function with the relevant parameters as defined in the schema, using the appropriate collection_name. The parameter values should fit the MongoDB API. The function will return the query output, or notify you with an error.",
+  "strict": false,
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "collection_name": {
+        "type": "string",
+        "enum": [
+          "companies",
+          "employees",
+          "availabilities",
+          "users",
+          "weeklyschedules"
+        ],
+        "description": "The name of the MongoDB collection to query"
+      },
+      "query": {
+        "type": "object",
+        "description": "MongoDB query object to filter documents, Write this query according to the modelSchema you are using"
+      },
+      "sort": {
+        "type": "object",
+        "description": "MongoDB sort object to specify the order of results"
+      },
+      "limit": {
+        "type": "integer",
+        "description": "Maximum number of documents to return"
+      },
+      "projection": {
+        "type": "object",
+        "description": "MongoDB projection object to specify which fields to include or exclude"
+      },
+      "skip": {
+        "type": "integer",
+        "description": "Number of documents to skip before returning results"
+      }
+    },
+    "required": [
+      "collectionName",
+      "query"
+    ]
+  }
+}
+
+
+===========================================================================
+get_system_context
+===========================================================================
+{
+  "name": "get_system_context",
+  "description": "Get context from backend such as the user's id and other details",
+  "strict": false,
+  "parameters": {
+    "type": "object",
+    "properties": {},
+    "required": []
+  }
+}
+
+============================================================================
+create_employee
+============================================================================
+{
+  "name": "create_employee",
+  "description": "Create a new employee in the database for the Business. This function should be invoked with the relevant parameters as defined in the schema. The parameter values should fit the function. The function will return the write output, or will notify you with an error. In that case, summarize the error to the user and tell the user to contact the administrator.",
+  "strict": false,
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "The name of the user"
+      },
+      "email": {
+        "type": "string",
+        "description": "The email address of the user"
+      },
+      "role": {
+        "type": "string",
+        "description": "The role of the user (optional, defaults to 'employee')"
+      },
+      "companyName": {
+        "type": "string",
+        "description": "The naem of the company for which the employee is being created"
+      }
+    },
+    "required": [
+      "name",
+      "email",
+      "role",
+      "companyName"
+    ]
+  }
+}
+
+
+
+============================================================
+send_email
+============================================================
+{
+  "name": "send_email",
+  "description": "Send an email to the specified address with a dynamically generated subject, text, and HTML content. This function should be called when an email needs to be sent, such as sending important notifications related to the schedule or shifts or when the user asks to send emials. The content is to be generated based on the context provided.",
+  "strict": false,
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "subject": {
+        "type": "string",
+        "description": "The subject line of the email"
+      },
+      "text": {
+        "type": "string",
+        "description": "The plain text content of the email. Should include relevant details like name and company"
+      },
+      "html": {
+        "type": "string",
+        "description": "The HTML content of the email. Should be a formatted version of the text content, potentially including HTML tags for emphasis and structure."
+      },
+      "toAddress": {
+        "type": "string",
+        "description": "The email address of the recipient"
+      }
+    },
+    "required": [
+      "subject",
+      "text",
+      "html",
+      "toAddress"
+    ]
+  }
+}
+
+===========================================================
+initiate_weekly_scheduling
+==========================================================
+{
+  "name": "initiate_weekly_scheduling",
+  "description": "Initiate the weekly scheduling process for a specific business. This function creates pending weekly schedule entries for all employees and sets up automated checks at specified intervals.",
+  "strict": false,
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "businessId": {
+        "type": "string",
+        "description": "The unique identifier of the business for which to initiate scheduling"
+      },
+      "weekStartDate": {
+        "type": "string",
+        "description": "The start date of the week for which to create schedules, in ISO 8601 format (YYYY-MM-DD)"
+      },
+      "checkInterval": {
+        "type": "string",
+        "description": "The interval at which to perform automated checks, in 24-hour HH:MM format (e.g., '00:10' for every 10 minutes, '01:00' for hourly, '05:30' for every 5 hours and 30 minutes)",
+        "pattern": "^([01]\\d|2[0-3]):([0-5]\\d)$"
+      },
+      "nextScheduleInitiationDate": {
+        "type": "string",
+        "description": "The date at which the next week schedule should be initiated. Suppose the user give you the days he want the next week schedule to be intiated before the week start date. You have to subtract those days from the nextWeekStartDate and nextWeekStartDate is current weekStartDate plus 7 days"
+      },
+      "nextWeekStartDate": {
+        "type": "string",
+        "description": "Add 7 days to the currentWeekStartDate and you will get the nextWeekStartDate. Or if the user has given you the nextWeekStartDate then use it "
+      },
+      "availabilitySubmissionDeadline": {
+        "type": "string",
+        "description": "The deadline till which the employees can add their availbalities for this week, in ISO 8601 format (YYYY-MM-DD)"
+      }
+    },
+    "required": [
+      "businessId",
+      "weekStartDate",
+      "checkInterval",
+      "availabilitySubmissionDeadline",
+      "nextWeekStartDate",
+      "nextScheduleInitiationDate"
+    ]
+  }
+}
+==========================================
+submit_employee_availability
+==========================================
+{
+  "name": "submit_employee_availability",
+  "description": "Submit shifts for an employee for a specific week. This function should be called when an employee wants to submit their shifts for the upcoming week.",
+  "strict": false,
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "employeeId": {
+        "type": "string",
+        "description": "The unique identifier of the employee submitting shifts"
+      },
+      "weekStartDate": {
+        "type": "string",
+        "description": "The start date of the week for which shifts are being submitted, in ISO 8601 format (YYYY-MM-DD)"
+      },
+      "shifts": {
+        "type": "array",
+        "description": "An array of shift objects representing the employee's shifts for the week",
+        "items": {
+          "type": "object",
+          "properties": {
+            "startTime": {
+              "type": "string",
+              "description": "The start time of the shift in ISO 8601 format (YYYY-MM-DDTHH:mm:ss.sssZ)"
+            },
+            "endTime": {
+              "type": "string",
+              "description": "The end time of the shift in ISO 8601 format (YYYY-MM-DDTHH:mm:ss.sssZ)"
+            },
+            "notes": {
+              "type": "string",
+              "description": "Any additional notes for the shift (optional)"
+            }
+          },
+          "required": [
+            "startTime",
+            "endTime"
+          ]
+        }
+      }
+    },
+    "required": [
+      "employeeId",
+      "weekStartDate",
+      "shifts"
+    ]
+  }
+}
+
+
+
+=====================================================
+get_company_link
+=====================================================
+{
+  "name": "get_company_link",
+  "description": "Get the signup link for new employees based on the company name, you may need to call the get_system_context before this to get the userId. The function will return the links for all the roles and you have to display all the links to the user",
+  "strict": false,
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "companyName": {
+        "type": "string",
+        "description": "The name of the company for which to generate the signup link"
+      },
+      "userId": {
+        "type": "string",
+        "description": "The id of the user sending the messaage"
+      },
+      "role": {
+        "type": "string",
+        "description": "The role of the employee that will signup with this link"
+      }
+    },
+    "required": [
+      "companyName",
+      "userId"
+    ]
+  }
+}

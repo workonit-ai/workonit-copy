@@ -1,0 +1,37 @@
+.default-select__control {
+	height: 100%;
+	min-height: 66px !important;
+	border-radius: 10px !important;
+	border-color: #d9dbe9 !important;
+}
+
+.default-select__indicator-separator {
+	display: none;
+}
+
+.country-select-container {
+	width: 30%;
+}
+
+.country-select__control {
+	border-radius: 10px !important;
+	background: #eff0f6 !important;
+	height: 56px;
+}
+
+.country-select__option {
+	cursor: pointer !important;
+}
+
+.country-select__option:hover,
+.country-select__option:focus,
+.country-select__option:active {
+	background: #296aac !important;
+	color: #fff;
+	opacity: 0.8;
+}
+
+.country-select__option--is-selected {
+	background: #296aac !important;
+	color: #fff;
+}

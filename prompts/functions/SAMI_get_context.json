@@ -1,0 +1,10 @@
+{
+    "name": "SAMI_get_context",
+    "description": "Get context from backend such as the user's id, user's relevant notifications, and the time now",
+    "strict": false,
+    "parameters": {
+      "type": "object",
+      "properties": {},
+      "required": []
+    }
+  }

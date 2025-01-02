@@ -1,0 +1,22 @@
+{
+  "name": "immediate_tweet",
+  "description": "a tweet for a user (when he has already twitter connection with the app) this tweet will be published imimmediatelly  ",
+  "strict": false,
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "userId": {
+        "type": "string",
+        "description": "The unique identifier of the user"
+      },
+      "text": {
+        "type": "string",
+        "description": "The content of the tweet to be posted"
+      }
+    },
+    "required": [
+      "userId",
+      "text"
+    ]
+  }
+}

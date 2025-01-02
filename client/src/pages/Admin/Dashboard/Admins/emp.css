@@ -1,0 +1,41 @@
+.employee-heading {
+	display: flex;
+	padding-right: 20px;
+	margin-top: 10px;
+	justify-content: space-between;
+}
+
+.cnic-image-upload {
+	display: none;
+}
+
+.cnic-images :hover {
+	cursor: pointer !important;
+}
+
+.image-wrapper {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.col-md-5 {
+	width: 50%;
+}
+
+.remove-image {
+	cursor: pointer;
+}
+
+.cnic-image-container {
+	height: 20px;
+}
+
+.details-image-container {
+	height: 150px;
+	width: 150px;
+	border-radius: 50%;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+}

@@ -1,0 +1,26 @@
+{
+    "name": "db_update",
+    "description": "Update a document in the backend db. You should invoke the db_update function with the relevant parameters as defined in the schema, using the relevant collection_name and documentId. The parameter values should fit MongoDB API. You should populate the document fields according to what needs to be updated. The function will return the update output, or will notify you with an error. In that case, tell the user to contact the administrator. Parameters for example may look like: { \"document\": { \"name\": \"John Doe Updated\", \"phone\": \"987-654-3210\", \"short_description\": \"Senior Software Developer with 7 years of experience.\" }, \"collection_name\": \"cvs\", \"documentId\": \"60d5ecb8b392d4c6d8f1c9e5\" }",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "collection_name": {
+          "type": "string",
+          "description": "The name of the MongoDB collection to update in"
+        },
+        "documentId": {
+          "type": "string",
+          "description": "The unique identifier of the document to be updated"
+        },
+        "document": {
+          "type": "object",
+          "description": "The document fields to be updated in the collection"
+        }
+      },
+      "required": [
+        "collection_name",
+        "documentId",
+        "document"
+      ]
+    }
+  }

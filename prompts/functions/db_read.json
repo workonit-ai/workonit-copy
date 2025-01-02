@@ -1,0 +1,37 @@
+{
+    "name": "db_read",
+    "description": "Query for anytyhing in the backend db. you should invoke the db_read function with the relevant paramaters as defined in the schema, using the relevant collection_name. the parameter values should fit mongodb api. you should populate the query fields according to what you are searching for. the function will return the query output, or will notify you with an error. in that case, tell the user to contact administrator. parameters for example may look like: { \"query\": { \"createdAt\": { \"$gte\": \"2024-06-01T00:00:00.000Z\" } }, \"collectionName\": \"jobs\", \"sort\": { \"createdAt\": -1 }, \"limit\": 5, \"projection\": { \"role\": 1, \"createdAt\": 1 } }. another example is: { \"query\": {}, \"collectionName\": \"invented_collection\", \"sort\": { \"field1\": 1 }, \"limit\": 10, \"projection\": { \"field1\": 1, \"field2\": 1, \"field3\": 1 } }",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "collection_name": {
+          "type": "string",
+          "description": "The name of the MongoDB collection to query"
+        },
+        "query": {
+          "type": "object",
+          "description": "MongoDB query object to filter documents"
+        },
+        "sort": {
+          "type": "object",
+          "description": "MongoDB sort object to specify the order of results"
+        },
+        "limit": {
+          "type": "integer",
+          "description": "Maximum number of documents to return"
+        },
+        "projection": {
+          "type": "object",
+          "description": "MongoDB projection object to specify which fields to include or exclude"
+        },
+        "skip": {
+          "type": "integer",
+          "description": "Number of documents to skip before returning results"
+        }
+      },
+      "required": [
+        "collectionName",
+        "query"
+      ]
+    }
+  }

@@ -1,0 +1,21 @@
+{
+    "name": "db_write",
+    "description": "Store a document in the backend db. You should invoke the db_write function with the relevant parameters as defined in the schema, using the relevant collection_name. The parameter values should fit MongoDB API. You should populate the document fields according to what needs to be stored. The function will return the write output, or will notify you with an error. In that case, tell the user to contact the administrator. Parameters for example may look like: { \"document\": { \"name\": \"John Doe\", \"phone\": \"123-456-7890\", \"short_description\": \"Software Developer with 5 years of experience.\", \"email\": \"john.doe@example.com\", \"education\": \"B.Sc. in Computer Science\", \"experience\": \"Worked at XYZ Corp for 3 years as a backend developer.\", \"languages\": [\"English\", \"Spanish\"], \"looking_for\": \"Looking for a challenging role in a dynamic company.\", \"availability\": \"Immediately\", \"location\": \"New York, USA\", \"attachment\": \"URL_to_CV\" }, \"collection_name\": \"cvs\" }",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "collection_name": {
+          "type": "string",
+          "description": "The name of the MongoDB collection to write to"
+        },
+        "document": {
+          "type": "object",
+          "description": "The document to be inserted into the collection"
+        }
+      },
+      "required": [
+        "collection_name",
+        "document"
+      ]
+    }
+  }

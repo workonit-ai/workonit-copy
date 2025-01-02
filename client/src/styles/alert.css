@@ -1,0 +1,77 @@
+.top-alert {
+	z-index: 1111111111;
+	position: absolute;
+	width: 28rem;
+	right: 1rem;
+	padding: 0 1.6rem;
+	top: 1.563rem;
+}
+
+.closeIcon {
+	position: absolute;
+	top: -10px;
+	left: 18px;
+	cursor: pointer;
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.closeIcon img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.errorAlert {
+	background: #ffdad6;
+	box-shadow: 0px 4px 16px rgba(255, 132, 132, 0.13);
+	border-radius: 0.5rem;
+	padding: 1.25rem 1.375rem;
+	width: 100%;
+}
+
+.alertImg {
+	width: 44px;
+	height: 44px;
+}
+
+.alertImg img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.errorDescription {
+	font-weight: 400;
+	font-size: 1rem;
+	line-height: 1.5rem;
+}
+
+.success {
+	background: #71bc74;
+	color: #fff;
+}
+
+.alert-error {
+	color: #410002;
+	background: #ffdad6;
+}
+
+.dismissible-close-btn {
+	width: 30px;
+	height: 30px;
+}
+
+.dismissible-close-btn img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+@media screen and (max-width: 47rem) {
+	.top-alert {
+		width: 100%;
+		right: 0;
+		top: 1.563rem;
+	}
+}

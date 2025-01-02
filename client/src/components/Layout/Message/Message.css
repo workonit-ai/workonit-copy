@@ -1,0 +1,96 @@
+.message {
+	display: flex;
+	align-items: center;
+	margin-bottom: 8px;
+	max-width: 70vw;
+}
+
+.bot-message .text {
+	background-color: white;
+}
+
+.text {
+	margin-left: 35px;
+	padding: 15px 24px;
+	border-radius: 12px;
+	line-height: 1.6rem;
+	max-width: 70%;
+	font-size: 15px;
+}
+
+.text-only {
+	margin-left: 45px;
+}
+
+.response {
+	float: right;
+	display: flex;
+	width: 100%;
+	justify-content: flex-end;
+}
+
+.response .text {
+	background-color: #376b1d;
+	color: white;
+}
+
+.response .text-skeleton {
+	background-color: rgba(201, 218, 198, 0.205);
+}
+
+.bot-skeleton .text-skeleton {
+	background-color: rgba(201, 218, 198, 0.205);
+}
+
+@media screen and (max-width: 630px) {
+	.text {
+		margin-inline: 0px;
+		font-size: 14px;
+		padding: 10px 20px;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.text {
+		max-width: 90%;
+	}
+
+	.bot-skeleton-text,
+	.user-skeleton-text {
+		max-width: 90%;
+	}
+}
+
+@media screen and (max-width: 450px) {
+	.text {
+		font-size: 13px;
+	}
+}
+
+
+.message {
+	position: relative;
+	padding-bottom: 20px; /* Adjust as needed to accommodate the timestamp */
+  }
+  
+  .response {
+	position: relative;
+  }
+  
+  .time {
+	position: absolute;
+	bottom: -18px; /* Adjust this value to position the timestamp */
+	right: 0;
+	font-size: 0.75rem; /* Makes the timestamp smaller */
+	color: #888; /* Adjust color as needed */
+  }
+  
+  .user-message .time {
+	right: 0;
+  }
+  
+  .bot-message .time {
+	left: 0;
+  }
+  
+  /* Add any additional styling for user-message and bot-message as needed */

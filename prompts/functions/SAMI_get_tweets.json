@@ -1,0 +1,10 @@
+{
+  "name": "SAMI_get_tweets",
+  "description": "Get Users twitter data and tweets, tweet status 200 says it was sent and 400 means it had problem, if its empty it wasn't sent yet",
+  "strict": false,
+  "parameters": {
+    "type": "object",
+    "properties": {},
+    "required": []
+  }
+}

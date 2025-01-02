@@ -1,0 +1,73 @@
+.fc table,
+.fc th,
+.fc td {
+	border: none !important;
+	font-size: 14px;
+	font-weight: 500;
+	font-family: "Inter", sans-serif !important;
+	vertical-align: middle;
+}
+.fc-toolbar-title {
+	font-size: 18px !important;
+	font-weight: 600;
+	font-family: "Inter", sans-serif !important;
+}
+.fc-theme-standard td {
+	height: 1px !important;
+}
+
+.fc-daygrid-day-events {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.fc-event-title,
+.fc-event-time {
+	display: none;
+}
+
+.fc .fc-daygrid-day-top {
+	margin-top: 15px;
+	justify-content: center;
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+	background-color: #1e75ff;
+	border-radius: 10px;
+}
+.fc .fc-daygrid-day.fc-day-today .fc-daygrid-event-dot {
+	border-color: #fff !important;
+}
+.fc-col-header-cell .fc-scrollgrid-sync-inner {
+	text-transform: uppercase;
+	color: #b5b5be;
+}
+.fc .fc-button .fc-icon {
+	rotate: 90deg;
+	color: #b5b5be;
+}
+
+.fc .fc-button-group > .fc-button {
+	flex: 1 1 auto;
+	position: relative;
+	background: transparent;
+	border: 1px solid #44444f;
+	border-radius: 8px !important;
+}
+
+.fc .fc-button-group {
+	gap: 10px;
+}
+
+.fc-toolbar-chunk {
+}
+
+.fc-daygrid-event-dot {
+	border-color: #1e75ff !important;
+}
+
+.fc .fc-scroller-liquid-absolute,
+.fc .fc-scroller {
+	overflow: hidden !important;
+}

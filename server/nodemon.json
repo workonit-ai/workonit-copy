@@ -1,0 +1,3 @@
+{
+    "ignore": ["routes/api/temp/*", "routes/api/temp/**/*"]
+  }

@@ -1,0 +1,17 @@
+{
+  "name": "create_twitter_auth",
+  "description": "gets a user id  for unauthusers (check twitterConnection schema) and return a url for the user to authenticate with twitter, put in mind that the returned url cannot be reclicked and need to be remade ",
+  "strict": false,
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "user": {
+        "type": "string",
+        "description": "The user id to get url for"
+      }
+    },
+    "required": [
+      "user"
+    ]
+  }
+}

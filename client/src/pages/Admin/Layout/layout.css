@@ -1,0 +1,17 @@
+.header {
+	height: 80px;
+	background-color: #333; /* Set your desired background color */
+	color: white; /* Set your desired text color */
+	padding: 20px; /* Adjust padding based on your design */
+	/* position: fixed; */
+	top: 0;
+	left: 0;
+	width: 100%;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a box shadow for a subtle effect */
+	z-index: 1000; /* Set a high z-index to ensure it appears above other elements */
+}
+
+.page {
+	display: flex;
+	flex-direction: column;
+}

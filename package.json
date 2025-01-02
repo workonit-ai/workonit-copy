@@ -1,0 +1,24 @@
+{
+	"name": "work-on-it",
+	"version": "1.2.9",
+	"description": "",
+	"main": "server/app.js",
+	"scripts": {
+		"install:client": "cd client && npm install  --force --legacy-peer-deps",
+		"install:server": "cd server && npm install",
+		"client:dev": "cd client && npm run dev",
+		"client:preview": "cd client && npm run preview",
+		"server:dev": "cd server && npm run dev",
+		"server:prod": "cd server && npm run prod",
+		"build:client": "cd client && npm run build --omit=dev",
+		"build:client-preview": "cd client && npm run build:preview --omit=dev",
+		"seed": "node server/seeder"
+	},
+	"author": "workonit-ai",
+	"license": "ISC",
+	"dependencies": {
+		"@sendgrid/mail": "^8.1.3",
+		"agenda": "^5.0.0",
+		"react-syntax-highlighter": "^15.5.0"
+	}
+}

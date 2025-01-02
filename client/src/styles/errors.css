@@ -1,0 +1,30 @@
+.error-message input {
+	color: #ff4d4d;
+	border-color: #ff4d4d;
+	margin-bottom: 5px;
+}
+.error-message .select-container {
+	border: solid 1px #ff4d4d;
+	border-radius: 10px;
+}
+
+.error-message input::placeholder {
+	color: #ff4d4d;
+}
+
+.error-message .error {
+	color: #ff4d4d;
+	font-size: 12px;
+}
+
+div.error {
+	color: #ff4d4d;
+	font-size: 12px;
+	margin-top: 5px;
+}
+
+.server-error {
+	color: #ff4d4d;
+	font-size: 14px;
+	text-align: center;
+}
